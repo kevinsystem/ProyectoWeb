@@ -1,0 +1,111 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<Mapping Space="C-S" xmlns="http://schemas.microsoft.com/ado/2009/11/mapping/cs">
+  <EntityContainerMapping StorageEntityContainer="hotel_vangohModelStoreContainer" CdmEntityContainer="hotel_vangohEntities">
+    <EntitySetMapping Name="cliente">
+      <EntityTypeMapping TypeName="hotel_vangohModel.cliente">
+        <MappingFragment StoreEntitySet="cliente">
+          <ScalarProperty Name="id" ColumnName="id" />
+          <ScalarProperty Name="cli_codigo" ColumnName="cli_codigo" />
+          <ScalarProperty Name="cli_descripcion" ColumnName="cli_descripcion" />
+          <ScalarProperty Name="cli_nombres" ColumnName="cli_nombres" />
+          <ScalarProperty Name="cli_apellidos" ColumnName="cli_apellidos" />
+          <ScalarProperty Name="cli_telefono" ColumnName="cli_telefono" />
+          <ScalarProperty Name="cli_email" ColumnName="cli_email" />
+          <ScalarProperty Name="cli_direccion" ColumnName="cli_direccion" />
+          <ScalarProperty Name="tic_id" ColumnName="tic_id" />
+        </MappingFragment>
+      </EntityTypeMapping>
+    </EntitySetMapping>
+    <EntitySetMapping Name="comprobante">
+      <EntityTypeMapping TypeName="hotel_vangohModel.comprobante">
+        <MappingFragment StoreEntitySet="comprobante">
+          <ScalarProperty Name="id" ColumnName="id" />
+          <ScalarProperty Name="com_fecha_registro" ColumnName="com_fecha_registro" />
+          <ScalarProperty Name="com_importe" ColumnName="com_importe" />
+          <ScalarProperty Name="com_igv" ColumnName="com_igv" />
+          <ScalarProperty Name="com_estado" ColumnName="com_estado" />
+          <ScalarProperty Name="com_nombre" ColumnName="com_nombre" />
+          <ScalarProperty Name="com_apellido" ColumnName="com_apellido" />
+          <ScalarProperty Name="res_id" ColumnName="res_id" />
+        </MappingFragment>
+      </EntityTypeMapping>
+    </EntitySetMapping>
+    <EntitySetMapping Name="comprobante_detalle">
+      <EntityTypeMapping TypeName="hotel_vangohModel.comprobante_detalle">
+        <MappingFragment StoreEntitySet="comprobante_detalle">
+          <ScalarProperty Name="id" ColumnName="id" />
+          <ScalarProperty Name="hab_precio" ColumnName="hab_precio" />
+          <ScalarProperty Name="hab_cantidad" ColumnName="hab_cantidad" />
+          <ScalarProperty Name="hab_importe" ColumnName="hab_importe" />
+          <ScalarProperty Name="com_id" ColumnName="com_id" />
+        </MappingFragment>
+      </EntityTypeMapping>
+    </EntitySetMapping>
+    <EntitySetMapping Name="habitacion">
+      <EntityTypeMapping TypeName="hotel_vangohModel.habitacion">
+        <MappingFragment StoreEntitySet="habitacion">
+          <ScalarProperty Name="id" ColumnName="id" />
+          <ScalarProperty Name="hab_codigo" ColumnName="hab_codigo" />
+          <ScalarProperty Name="hab_descripcion" ColumnName="hab_descripcion" />
+          <ScalarProperty Name="hab_fotop" ColumnName="hab_fotop" />
+          <ScalarProperty Name="hab_precio" ColumnName="hab_precio" />
+          <ScalarProperty Name="tih_id" ColumnName="tih_id" />
+        </MappingFragment>
+      </EntityTypeMapping>
+    </EntitySetMapping>
+    <EntitySetMapping Name="reserva">
+      <EntityTypeMapping TypeName="hotel_vangohModel.reserva">
+        <MappingFragment StoreEntitySet="reserva">
+          <ScalarProperty Name="id" ColumnName="id" />
+          <ScalarProperty Name="hab_id" ColumnName="hab_id" />
+          <ScalarProperty Name="cli_id" ColumnName="cli_id" />
+          <ScalarProperty Name="usu_id" ColumnName="usu_id" />
+          <ScalarProperty Name="res_fecha_registro" ColumnName="res_fecha_registro" />
+          <ScalarProperty Name="res_fecha_reserva" ColumnName="res_fecha_reserva" />
+          <ScalarProperty Name="res_estado" ColumnName="res_estado" />
+          <ScalarProperty Name="res_monto" ColumnName="res_monto" />
+        </MappingFragment>
+      </EntityTypeMapping>
+    </EntitySetMapping>
+    <EntitySetMapping Name="rol">
+      <EntityTypeMapping TypeName="hotel_vangohModel.rol">
+        <MappingFragment StoreEntitySet="rol">
+          <ScalarProperty Name="id" ColumnName="id" />
+          <ScalarProperty Name="rol_codigo" ColumnName="rol_codigo" />
+          <ScalarProperty Name="rol_descripcion" ColumnName="rol_descripcion" />
+        </MappingFragment>
+      </EntityTypeMapping>
+    </EntitySetMapping>
+    <EntitySetMapping Name="tipo_cliente">
+      <EntityTypeMapping TypeName="hotel_vangohModel.tipo_cliente">
+        <MappingFragment StoreEntitySet="tipo_cliente">
+          <ScalarProperty Name="id" ColumnName="id" />
+          <ScalarProperty Name="tic_codigo" ColumnName="tic_codigo" />
+          <ScalarProperty Name="tic_descripcion" ColumnName="tic_descripcion" />
+        </MappingFragment>
+      </EntityTypeMapping>
+    </EntitySetMapping>
+    <EntitySetMapping Name="tipo_habitacion">
+      <EntityTypeMapping TypeName="hotel_vangohModel.tipo_habitacion">
+        <MappingFragment StoreEntitySet="tipo_habitacion">
+          <ScalarProperty Name="id" ColumnName="id" />
+          <ScalarProperty Name="tih_codigo" ColumnName="tih_codigo" />
+          <ScalarProperty Name="tih_descripcion" ColumnName="tih_descripcion" />
+        </MappingFragment>
+      </EntityTypeMapping>
+    </EntitySetMapping>
+    <EntitySetMapping Name="usuario">
+      <EntityTypeMapping TypeName="hotel_vangohModel.usuario">
+        <MappingFragment StoreEntitySet="usuario">
+          <ScalarProperty Name="id" ColumnName="id" />
+          <ScalarProperty Name="usu_usuario" ColumnName="usu_usuario" />
+          <ScalarProperty Name="usu_clave" ColumnName="usu_clave" />
+          <ScalarProperty Name="usu_estado" ColumnName="usu_estado" />
+          <ScalarProperty Name="usu_nombre" ColumnName="usu_nombre" />
+          <ScalarProperty Name="usu_apellidos" ColumnName="usu_apellidos" />
+          <ScalarProperty Name="rol_id" ColumnName="rol_id" />
+        </MappingFragment>
+      </EntityTypeMapping>
+    </EntitySetMapping>
+  </EntityContainerMapping>
+</Mapping>

@@ -1,0 +1,82 @@
+﻿@model proyectokevin.Models.cliente
+
+@{
+    ViewBag.Title = "Details";
+}
+
+<h2>Details</h2>
+
+<div>
+    <h4>cliente</h4>
+    <hr />
+    <dl class="dl-horizontal">
+        <dt>
+            @Html.DisplayNameFor(model => model.cli_codigo)
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.cli_codigo)
+        </dd>
+
+        <dt>
+            @Html.DisplayNameFor(model => model.cli_descripcion)
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.cli_descripcion)
+        </dd>
+
+        <dt>
+            @Html.DisplayNameFor(model => model.cli_nombres)
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.cli_nombres)
+        </dd>
+
+        <dt>
+            @Html.DisplayNameFor(model => model.cli_apellidos)
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.cli_apellidos)
+        </dd>
+
+        <dt>
+            @Html.DisplayNameFor(model => model.cli_telefono)
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.cli_telefono)
+        </dd>
+
+        <dt>
+            @Html.DisplayNameFor(model => model.cli_email)
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.cli_email)
+        </dd>
+
+        <dt>
+            @Html.DisplayNameFor(model => model.cli_direccion)
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.cli_direccion)
+        </dd>
+
+        <dt>
+            @Html.DisplayNameFor(model => model.tipo_cliente.tic_codigo)
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.tipo_cliente.tic_codigo)
+        </dd>
+
+    </dl>
+</div>
+<p>
+    @Html.ActionLink("Edit", "Edit", new { id = Model.id }) |
+    @Html.ActionLink("Back to List", "Index")
+</p>

@@ -1,0 +1,80 @@
+﻿@model proyectokevin.Models.reserva
+
+@{
+    ViewBag.Title = "Delete";
+}
+
+<h2>Delete</h2>
+
+<h3>Are you sure you want to delete this?</h3>
+<div>
+    <h4>reserva</h4>
+    <hr />
+    <dl class="dl-horizontal">
+        <dt>
+            @Html.DisplayNameFor(model => model.res_fecha_registro)
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.res_fecha_registro)
+        </dd>
+
+        <dt>
+            @Html.DisplayNameFor(model => model.res_fecha_reserva)
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.res_fecha_reserva)
+        </dd>
+
+        <dt>
+            @Html.DisplayNameFor(model => model.res_estado)
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.res_estado)
+        </dd>
+
+        <dt>
+            @Html.DisplayNameFor(model => model.res_monto)
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.res_monto)
+        </dd>
+
+        <dt>
+            @Html.DisplayNameFor(model => model.cliente.cli_codigo)
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.cliente.cli_codigo)
+        </dd>
+
+        <dt>
+            @Html.DisplayNameFor(model => model.habitacion.hab_codigo)
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.habitacion.hab_codigo)
+        </dd>
+
+        <dt>
+            @Html.DisplayNameFor(model => model.usuario.usu_usuario)
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.usuario.usu_usuario)
+        </dd>
+
+    </dl>
+
+    @using (Html.BeginForm()) {
+        @Html.AntiForgeryToken()
+
+        <div class="form-actions no-color">
+            <input type="submit" value="Delete" class="btn btn-default" /> |
+            @Html.ActionLink("Back to List", "Index")
+        </div>
+    }
+</div>

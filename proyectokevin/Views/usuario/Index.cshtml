@@ -1,0 +1,63 @@
+﻿@model IEnumerable<proyectokevin.Models.usuario>
+
+@{
+    ViewBag.Title = "Usuarios";
+}
+
+<h2>Gestión de Usuarios</h2>
+
+<p>
+    <a href="@Url.Action("Create", "usuario")" class="btn btn-success btn-sm"><span class="glyphicon glyphicon-plus"></span> Nuevo Usuario</a>
+</p>
+<table class="table">
+    <tr>
+        <th>
+            Usuario
+        </th>
+        <th>
+            Clave
+        </th>
+        <th>
+            Estado
+        </th>
+        <th>
+            Nombres
+        </th>
+        <th>
+            Apellidos
+        </th>
+        <th>
+            Rol
+        </th>
+        <th></th>
+    </tr>
+
+@foreach (var item in Model) {
+    <tr>
+        <td>
+            @Html.DisplayFor(modelItem => item.usu_usuario)
+        </td>
+        <td>
+            @Html.DisplayFor(modelItem => item.usu_clave)
+        </td>
+        <td>
+            @Html.DisplayFor(modelItem => item.usu_estado)
+        </td>
+        <td>
+            @Html.DisplayFor(modelItem => item.usu_nombre)
+        </td>
+        <td>
+            @Html.DisplayFor(modelItem => item.usu_apellidos)
+        </td>
+        <td>
+            @Html.DisplayFor(modelItem => item.rol.rol_codigo)
+        </td>
+        <td>
+            <a href="@Url.Action("Edit", "usuario", new { id=item.id })" class="btn btn-primary btn-xs"><span class="glyphicon glyphicon-edit"></span> Editar</a>
+            <a href="@Url.Action("Details", "usuario", new { id=item.id })" class="btn btn-warning btn-xs"><span class="glyphicon glyphicon-eye-open"></span> Detalles</a>
+            <a href="@Url.Action("Delete", "usuario", new { id=item.id })" class="btn btn-danger btn-xs"><span class="glyphicon glyphicon-trash"></span> Borrar</a>
+        </td>
+    </tr>
+}
+
+</table>

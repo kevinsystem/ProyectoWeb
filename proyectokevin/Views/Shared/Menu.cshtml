@@ -1,0 +1,39 @@
+﻿@model System.Web.Mvc.HandleErrorInfo
+
+@{
+    ViewBag.Title = "Iniciaste Sesión";
+}
+
+<h2>Opciones del Sistema</h2>
+
+<div class="row">
+
+    <a class="col-sm-3 btn btn-sm btn-success" href="@Url.Action("Index", "habitacions")" target="_blank" style="margin-bottom:30px;">
+        <span class="glyphicon glyphicon-chevron-right"></span>
+       <h4>GESTIONAR HABITACIONES</h4> 
+    </a>
+    <a class="col-sm-3 btn btn-sm btn-success" href="@Url.Action("Index", "tipo_habitacion")" target="_blank" style="margin-bottom:30px;">
+        <span class="glyphicon glyphicon-chevron-right"></span>
+        <h4>TIPOS DE HABITACIONES</h4> 
+    </a>
+    <a class="col-sm-3 btn btn-sm btn-success" href="@Url.Action("Index", "clientes")" target="_blank" style="margin-bottom:30px;">
+        <span class="glyphicon glyphicon-user"></span>
+        <h4>GESTIONAR CLIENTES</h4> 
+    </a>
+    <a class="col-sm-3 btn btn-sm btn-success" href="@Url.Action("Index", "reserva")" target="_blank" style="margin-bottom:30px;">
+        <span class="glyphicon glyphicon-ok"></span>
+        <h4>GESTIONAR RESERVAS</h4> 
+    </a>
+    <a class="col-sm-3 btn btn-sm btn-success" href="@Url.Action("Index", "usuario")" target="_blank" style="margin-bottom:30px;">
+        <span class="glyphicon glyphicon-wrench"></span>
+        <h4>CONFIGURACION DE USUARIOS</h4> 
+    </a>
+    <a class="col-sm-3 btn btn-sm btn-success" href="@Url.Action("Index", "rol")" target="_blank" style="margin-bottom:30px;">
+        <span class="glyphicon glyphicon-pushpin"></span>
+        <h4>ROLES</h4> 
+    </a>
+    <a class="col-sm-3 btn btn-sm btn-success" href="@Url.Action("Index", "tipo_cliente")" target="_blank" style="margin-bottom:30px;">
+        <span class="glyphicon glyphicon-pushpin"></span>
+        <h4>TIPO CLIENTE</h4>
+    </a>
+</div>

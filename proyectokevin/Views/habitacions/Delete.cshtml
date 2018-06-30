@@ -1,0 +1,63 @@
+﻿@model proyectokevin.Models.habitacion
+
+@{
+    ViewBag.Title = "Eliminar habitación";
+}
+
+<h2>Delete</h2>
+
+<h3>Seguro que desea borrar este registro?</h3>
+<div>
+    <hr />
+    <dl class="dl-horizontal">
+        <dt>
+            CODIGO
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.hab_codigo)
+        </dd>
+
+        <dt>
+            DESCRIPCION
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.hab_descripcion)
+        </dd>
+
+        <dt>
+            FOTO
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.hab_fotop)
+        </dd>
+
+        <dt>
+            PRECIO
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.hab_precio)
+        </dd>
+
+        <dt>
+            TIPO HABITACION
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.tipo_habitacion.tih_codigo)
+        </dd>
+
+    </dl>
+
+    @using (Html.BeginForm()) {
+        @Html.AntiForgeryToken()
+
+        <div class="form-actions no-color">
+            <input type="submit" value="Borrar" class="btn btn-danger" /> 
+            <a href="@Url.Action("Index", "habitacions")" class="btn btn-primary btn-sm"><span class="glyphicon glyphicon-chevron-left"></span> Regresar</a>
+        </div>
+    }
+</div>

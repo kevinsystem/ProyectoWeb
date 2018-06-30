@@ -1,0 +1,255 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<Schema Namespace="hotel_vangohModel" Alias="Self" annotation:UseStrongSpatialTypes="false" xmlns:annotation="http://schemas.microsoft.com/ado/2009/02/edm/annotation" xmlns:customannotation="http://schemas.microsoft.com/ado/2013/11/edm/customannotation" xmlns="http://schemas.microsoft.com/ado/2009/11/edm">
+  <EntityType Name="cliente">
+    <Key>
+      <PropertyRef Name="id" />
+    </Key>
+    <Property Name="id" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+    <Property Name="cli_codigo" Type="String" MaxLength="50" FixedLength="false" Unicode="false" />
+    <Property Name="cli_descripcion" Type="String" MaxLength="200" FixedLength="false" Unicode="false" />
+    <Property Name="cli_nombres" Type="String" MaxLength="100" FixedLength="false" Unicode="false" />
+    <Property Name="cli_apellidos" Type="String" MaxLength="150" FixedLength="false" Unicode="false" />
+    <Property Name="cli_telefono" Type="String" MaxLength="20" FixedLength="true" Unicode="false" />
+    <Property Name="cli_email" Type="String" MaxLength="50" FixedLength="false" Unicode="false" />
+    <Property Name="cli_direccion" Type="String" MaxLength="200" FixedLength="false" Unicode="false" />
+    <Property Name="tic_id" Type="Int32" Nullable="false" />
+    <NavigationProperty Name="tipo_cliente" Relationship="Self.FKcliente168831" FromRole="cliente" ToRole="tipo_cliente" />
+    <NavigationProperty Name="reserva" Relationship="Self.FKreserva948990" FromRole="cliente" ToRole="reserva" />
+  </EntityType>
+  <EntityType Name="comprobante">
+    <Key>
+      <PropertyRef Name="id" />
+    </Key>
+    <Property Name="id" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+    <Property Name="com_fecha_registro" Type="DateTime" Precision="3" />
+    <Property Name="com_importe" Type="Decimal" Precision="10" Scale="2" />
+    <Property Name="com_igv" Type="Decimal" Precision="10" Scale="2" />
+    <Property Name="com_estado" Type="Int32" />
+    <Property Name="com_nombre" Type="String" MaxLength="100" FixedLength="false" Unicode="false" />
+    <Property Name="com_apellido" Type="String" MaxLength="150" FixedLength="false" Unicode="false" />
+    <Property Name="res_id" Type="Int32" Nullable="false" />
+    <NavigationProperty Name="comprobante_detalle" Relationship="Self.FKcomprobant588849" FromRole="comprobante" ToRole="comprobante_detalle" />
+    <NavigationProperty Name="reserva" Relationship="Self.FKcomprobant678121" FromRole="comprobante" ToRole="reserva" />
+  </EntityType>
+  <EntityType Name="comprobante_detalle">
+    <Key>
+      <PropertyRef Name="id" />
+    </Key>
+    <Property Name="id" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+    <Property Name="hab_precio" Type="Decimal" Precision="10" Scale="2" />
+    <Property Name="hab_cantidad" Type="Int32" />
+    <Property Name="hab_importe" Type="Decimal" Precision="10" Scale="2" />
+    <Property Name="com_id" Type="Int32" Nullable="false" />
+    <NavigationProperty Name="comprobante" Relationship="Self.FKcomprobant588849" FromRole="comprobante_detalle" ToRole="comprobante" />
+  </EntityType>
+  <EntityType Name="habitacion">
+    <Key>
+      <PropertyRef Name="id" />
+    </Key>
+    <Property Name="id" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+    <Property Name="hab_codigo" Type="String" MaxLength="50" FixedLength="false" Unicode="false" />
+    <Property Name="hab_descripcion" Type="String" MaxLength="200" FixedLength="false" Unicode="false" />
+    <Property Name="hab_fotop" Type="String" MaxLength="250" FixedLength="false" Unicode="false" />
+    <Property Name="hab_precio" Type="Decimal" Precision="10" Scale="2" />
+    <Property Name="tih_id" Type="Int32" Nullable="false" />
+    <NavigationProperty Name="tipo_habitacion" Relationship="Self.FKhabitacion615678" FromRole="habitacion" ToRole="tipo_habitacion" />
+    <NavigationProperty Name="reserva" Relationship="Self.FKreserva877451" FromRole="habitacion" ToRole="reserva" />
+  </EntityType>
+  <EntityType Name="reserva">
+    <Key>
+      <PropertyRef Name="id" />
+    </Key>
+    <Property Name="id" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+    <Property Name="hab_id" Type="Int32" Nullable="false" />
+    <Property Name="cli_id" Type="Int32" Nullable="false" />
+    <Property Name="usu_id" Type="Int32" Nullable="false" />
+    <Property Name="res_fecha_registro" Type="DateTime" Precision="3" />
+    <Property Name="res_fecha_reserva" Type="DateTime" Precision="3" />
+    <Property Name="res_estado" Type="Int32" />
+    <Property Name="res_monto" Type="Decimal" Precision="10" Scale="2" />
+    <NavigationProperty Name="cliente" Relationship="Self.FKreserva948990" FromRole="reserva" ToRole="cliente" />
+    <NavigationProperty Name="comprobante" Relationship="Self.FKcomprobant678121" FromRole="reserva" ToRole="comprobante" />
+    <NavigationProperty Name="habitacion" Relationship="Self.FKreserva877451" FromRole="reserva" ToRole="habitacion" />
+    <NavigationProperty Name="usuario" Relationship="Self.FKreserva663108" FromRole="reserva" ToRole="usuario" />
+  </EntityType>
+  <EntityType Name="rol">
+    <Key>
+      <PropertyRef Name="id" />
+    </Key>
+    <Property Name="id" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+    <Property Name="rol_codigo" Type="String" MaxLength="50" FixedLength="false" Unicode="false" />
+    <Property Name="rol_descripcion" Type="String" MaxLength="200" FixedLength="false" Unicode="false" />
+    <NavigationProperty Name="usuario" Relationship="Self.FKusuario150527" FromRole="rol" ToRole="usuario" />
+  </EntityType>
+  <EntityType Name="tipo_cliente">
+    <Key>
+      <PropertyRef Name="id" />
+    </Key>
+    <Property Name="id" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+    <Property Name="tic_codigo" Type="String" MaxLength="50" FixedLength="false" Unicode="false" />
+    <Property Name="tic_descripcion" Type="String" MaxLength="200" FixedLength="false" Unicode="false" />
+    <NavigationProperty Name="cliente" Relationship="Self.FKcliente168831" FromRole="tipo_cliente" ToRole="cliente" />
+  </EntityType>
+  <EntityType Name="tipo_habitacion">
+    <Key>
+      <PropertyRef Name="id" />
+    </Key>
+    <Property Name="id" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+    <Property Name="tih_codigo" Type="String" MaxLength="50" FixedLength="false" Unicode="false" />
+    <Property Name="tih_descripcion" Type="String" MaxLength="200" FixedLength="false" Unicode="false" />
+    <NavigationProperty Name="habitacion" Relationship="Self.FKhabitacion615678" FromRole="tipo_habitacion" ToRole="habitacion" />
+  </EntityType>
+  <EntityType Name="usuario">
+    <Key>
+      <PropertyRef Name="id" />
+    </Key>
+    <Property Name="id" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+    <Property Name="usu_usuario" Type="String" MaxLength="100" FixedLength="false" Unicode="false" />
+    <Property Name="usu_clave" Type="String" MaxLength="250" FixedLength="false" Unicode="false" />
+    <Property Name="usu_estado" Type="Int32" />
+    <Property Name="usu_nombre" Type="String" MaxLength="100" FixedLength="false" Unicode="false" />
+    <Property Name="usu_apellidos" Type="String" MaxLength="150" FixedLength="false" Unicode="false" />
+    <Property Name="rol_id" Type="Int32" Nullable="false" />
+    <NavigationProperty Name="reserva" Relationship="Self.FKreserva663108" FromRole="usuario" ToRole="reserva" />
+    <NavigationProperty Name="rol" Relationship="Self.FKusuario150527" FromRole="usuario" ToRole="rol" />
+  </EntityType>
+  <Association Name="FKcliente168831">
+    <End Role="tipo_cliente" Type="Self.tipo_cliente" Multiplicity="1" />
+    <End Role="cliente" Type="Self.cliente" Multiplicity="*" />
+    <ReferentialConstraint>
+      <Principal Role="tipo_cliente">
+        <PropertyRef Name="id" />
+      </Principal>
+      <Dependent Role="cliente">
+        <PropertyRef Name="tic_id" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
+  <Association Name="FKreserva948990">
+    <End Role="cliente" Type="Self.cliente" Multiplicity="1" />
+    <End Role="reserva" Type="Self.reserva" Multiplicity="*" />
+    <ReferentialConstraint>
+      <Principal Role="cliente">
+        <PropertyRef Name="id" />
+      </Principal>
+      <Dependent Role="reserva">
+        <PropertyRef Name="cli_id" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
+  <Association Name="FKcomprobant588849">
+    <End Role="comprobante" Type="Self.comprobante" Multiplicity="1" />
+    <End Role="comprobante_detalle" Type="Self.comprobante_detalle" Multiplicity="*" />
+    <ReferentialConstraint>
+      <Principal Role="comprobante">
+        <PropertyRef Name="id" />
+      </Principal>
+      <Dependent Role="comprobante_detalle">
+        <PropertyRef Name="com_id" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
+  <Association Name="FKcomprobant678121">
+    <End Role="reserva" Type="Self.reserva" Multiplicity="1" />
+    <End Role="comprobante" Type="Self.comprobante" Multiplicity="*" />
+    <ReferentialConstraint>
+      <Principal Role="reserva">
+        <PropertyRef Name="id" />
+      </Principal>
+      <Dependent Role="comprobante">
+        <PropertyRef Name="res_id" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
+  <Association Name="FKhabitacion615678">
+    <End Role="tipo_habitacion" Type="Self.tipo_habitacion" Multiplicity="1" />
+    <End Role="habitacion" Type="Self.habitacion" Multiplicity="*" />
+    <ReferentialConstraint>
+      <Principal Role="tipo_habitacion">
+        <PropertyRef Name="id" />
+      </Principal>
+      <Dependent Role="habitacion">
+        <PropertyRef Name="tih_id" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
+  <Association Name="FKreserva877451">
+    <End Role="habitacion" Type="Self.habitacion" Multiplicity="1" />
+    <End Role="reserva" Type="Self.reserva" Multiplicity="*" />
+    <ReferentialConstraint>
+      <Principal Role="habitacion">
+        <PropertyRef Name="id" />
+      </Principal>
+      <Dependent Role="reserva">
+        <PropertyRef Name="hab_id" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
+  <Association Name="FKreserva663108">
+    <End Role="usuario" Type="Self.usuario" Multiplicity="1" />
+    <End Role="reserva" Type="Self.reserva" Multiplicity="*" />
+    <ReferentialConstraint>
+      <Principal Role="usuario">
+        <PropertyRef Name="id" />
+      </Principal>
+      <Dependent Role="reserva">
+        <PropertyRef Name="usu_id" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
+  <Association Name="FKusuario150527">
+    <End Role="rol" Type="Self.rol" Multiplicity="1" />
+    <End Role="usuario" Type="Self.usuario" Multiplicity="*" />
+    <ReferentialConstraint>
+      <Principal Role="rol">
+        <PropertyRef Name="id" />
+      </Principal>
+      <Dependent Role="usuario">
+        <PropertyRef Name="rol_id" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
+  <EntityContainer Name="hotel_vangohEntities" annotation:LazyLoadingEnabled="true">
+    <EntitySet Name="cliente" EntityType="Self.cliente" />
+    <EntitySet Name="comprobante" EntityType="Self.comprobante" />
+    <EntitySet Name="comprobante_detalle" EntityType="Self.comprobante_detalle" />
+    <EntitySet Name="habitacion" EntityType="Self.habitacion" />
+    <EntitySet Name="reserva" EntityType="Self.reserva" />
+    <EntitySet Name="rol" EntityType="Self.rol" />
+    <EntitySet Name="tipo_cliente" EntityType="Self.tipo_cliente" />
+    <EntitySet Name="tipo_habitacion" EntityType="Self.tipo_habitacion" />
+    <EntitySet Name="usuario" EntityType="Self.usuario" />
+    <AssociationSet Name="FKcliente168831" Association="Self.FKcliente168831">
+      <End Role="tipo_cliente" EntitySet="tipo_cliente" />
+      <End Role="cliente" EntitySet="cliente" />
+    </AssociationSet>
+    <AssociationSet Name="FKreserva948990" Association="Self.FKreserva948990">
+      <End Role="cliente" EntitySet="cliente" />
+      <End Role="reserva" EntitySet="reserva" />
+    </AssociationSet>
+    <AssociationSet Name="FKcomprobant588849" Association="Self.FKcomprobant588849">
+      <End Role="comprobante" EntitySet="comprobante" />
+      <End Role="comprobante_detalle" EntitySet="comprobante_detalle" />
+    </AssociationSet>
+    <AssociationSet Name="FKcomprobant678121" Association="Self.FKcomprobant678121">
+      <End Role="reserva" EntitySet="reserva" />
+      <End Role="comprobante" EntitySet="comprobante" />
+    </AssociationSet>
+    <AssociationSet Name="FKhabitacion615678" Association="Self.FKhabitacion615678">
+      <End Role="tipo_habitacion" EntitySet="tipo_habitacion" />
+      <End Role="habitacion" EntitySet="habitacion" />
+    </AssociationSet>
+    <AssociationSet Name="FKreserva877451" Association="Self.FKreserva877451">
+      <End Role="habitacion" EntitySet="habitacion" />
+      <End Role="reserva" EntitySet="reserva" />
+    </AssociationSet>
+    <AssociationSet Name="FKreserva663108" Association="Self.FKreserva663108">
+      <End Role="usuario" EntitySet="usuario" />
+      <End Role="reserva" EntitySet="reserva" />
+    </AssociationSet>
+    <AssociationSet Name="FKusuario150527" Association="Self.FKusuario150527">
+      <End Role="rol" EntitySet="rol" />
+      <End Role="usuario" EntitySet="usuario" />
+    </AssociationSet>
+  </EntityContainer>
+</Schema>

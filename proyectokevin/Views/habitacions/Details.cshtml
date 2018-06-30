@@ -1,0 +1,58 @@
+﻿@model proyectokevin.Models.habitacion
+
+@{
+    ViewBag.Title = "Details";
+}
+
+<h2>Details</h2>
+
+<div>
+    <h4>habitacion</h4>
+    <hr />
+    <dl class="dl-horizontal">
+        <dt>
+            CODIGO
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.hab_codigo)
+        </dd>
+
+        <dt>
+            DESCRIPCION
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.hab_descripcion)
+        </dd>
+
+        <dt>
+            FOTO
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.hab_fotop)
+        </dd>
+
+        <dt>
+           PRECIO
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.hab_precio)
+        </dd>
+
+        <dt>
+            TIPO HABITACION
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.tipo_habitacion.tih_codigo)
+        </dd>
+
+    </dl>
+</div>
+<p>
+    <a href="@Url.Action("Edit", "habitacions", new { id=Model.id })" class="btn btn-danger btn-sm"><span class="glyphicon glyphicon-edit"></span> Editar</a>
+    <a href="@Url.Action("Index", "habitacions")" class="btn btn-primary btn-sm"><span class="glyphicon glyphicon-chevron-left"></span> Regresar</a>
+</p>

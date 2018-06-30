@@ -1,0 +1,66 @@
+﻿@model proyectokevin.Models.usuario
+
+@{
+    ViewBag.Title = "Details";
+}
+
+<h2>Details</h2>
+
+<div>
+    <h4>usuario</h4>
+    <hr />
+    <dl class="dl-horizontal">
+        <dt>
+            @Html.DisplayNameFor(model => model.usu_usuario)
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.usu_usuario)
+        </dd>
+
+        <dt>
+            @Html.DisplayNameFor(model => model.usu_clave)
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.usu_clave)
+        </dd>
+
+        <dt>
+            @Html.DisplayNameFor(model => model.usu_estado)
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.usu_estado)
+        </dd>
+
+        <dt>
+            @Html.DisplayNameFor(model => model.usu_nombre)
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.usu_nombre)
+        </dd>
+
+        <dt>
+            @Html.DisplayNameFor(model => model.usu_apellidos)
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.usu_apellidos)
+        </dd>
+
+        <dt>
+            @Html.DisplayNameFor(model => model.rol.rol_codigo)
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.rol.rol_codigo)
+        </dd>
+
+    </dl>
+</div>
+<p>
+    @Html.ActionLink("Edit", "Edit", new { id = Model.id }) |
+    @Html.ActionLink("Back to List", "Index")
+</p>

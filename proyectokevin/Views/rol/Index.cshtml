@@ -1,0 +1,39 @@
+﻿@model IEnumerable<proyectokevin.Models.rol>
+
+@{
+    ViewBag.Title = "Rol";
+}
+
+<h2>Listado de Roles</h2>
+
+<p>
+    <a href="@Url.Action("Create", "rol")" class="btn btn-success btn-sm"><span class="glyphicon glyphicon-plus"></span> Nuevo Rol</a>
+</p>
+<table class="table">
+    <tr>
+        <th>
+            Código
+        </th>
+        <th>
+            Descripción
+        </th>
+        <th></th>
+    </tr>
+
+@foreach (var item in Model) {
+    <tr>
+        <td>
+            @Html.DisplayFor(modelItem => item.rol_codigo)
+        </td>
+        <td>
+            @Html.DisplayFor(modelItem => item.rol_descripcion)
+        </td>
+        <td>
+            <a href="@Url.Action("Edit", "rol", new { id=item.id })" class="btn btn-primary btn-xs"><span class="glyphicon glyphicon-edit"></span> Editar</a>
+            <a href="@Url.Action("Details", "rol", new { id=item.id })" class="btn btn-warning btn-xs"><span class="glyphicon glyphicon-eye-open"></span> Detalles</a>
+            <a href="@Url.Action("Delete", "rol", new { id=item.id })" class="btn btn-danger btn-xs"><span class="glyphicon glyphicon-trash"></span> Borrar</a>
+        </td>
+    </tr>
+}
+
+</table>

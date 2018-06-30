@@ -1,0 +1,74 @@
+﻿@model proyectokevin.Models.reserva
+
+@{
+    ViewBag.Title = "Details";
+}
+
+<h2>Details</h2>
+
+<div>
+    <h4>reserva</h4>
+    <hr />
+    <dl class="dl-horizontal">
+        <dt>
+            @Html.DisplayNameFor(model => model.res_fecha_registro)
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.res_fecha_registro)
+        </dd>
+
+        <dt>
+            @Html.DisplayNameFor(model => model.res_fecha_reserva)
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.res_fecha_reserva)
+        </dd>
+
+        <dt>
+            @Html.DisplayNameFor(model => model.res_estado)
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.res_estado)
+        </dd>
+
+        <dt>
+            @Html.DisplayNameFor(model => model.res_monto)
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.res_monto)
+        </dd>
+
+        <dt>
+            @Html.DisplayNameFor(model => model.cliente.cli_codigo)
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.cliente.cli_codigo)
+        </dd>
+
+        <dt>
+            @Html.DisplayNameFor(model => model.habitacion.hab_codigo)
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.habitacion.hab_codigo)
+        </dd>
+
+        <dt>
+            @Html.DisplayNameFor(model => model.usuario.usu_usuario)
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.usuario.usu_usuario)
+        </dd>
+
+    </dl>
+</div>
+<p>
+    @Html.ActionLink("Edit", "Edit", new { id = Model.id }) |
+    @Html.ActionLink("Back to List", "Index")
+</p>

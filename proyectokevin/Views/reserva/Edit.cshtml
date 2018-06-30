@@ -1,0 +1,90 @@
+﻿@model proyectokevin.Models.reserva
+
+@{
+    ViewBag.Title = "Editar Reserva";
+}
+
+<h2>Editar Reserva</h2>
+
+
+@using (Html.BeginForm())
+{
+    @Html.AntiForgeryToken()
+    
+    <div class="form-horizontal">
+        <h4>Editar Reserva</h4>
+        <hr />
+        @Html.ValidationSummary(true, "", new { @class = "text-danger" })
+        @Html.HiddenFor(model => model.id)
+
+        <div class="form-group">
+            <label class="control-label col-md-2">Habitación: </label>
+            <div class="col-md-10">
+                @Html.DropDownList("hab_id", null, htmlAttributes: new { @class = "form-control" })
+                @Html.ValidationMessageFor(model => model.hab_id, "", new { @class = "text-danger" })
+            </div>
+        </div>
+
+        <div class="form-group">
+            <label class="control-label col-md-2">Código Cliente: </label>
+            <div class="col-md-10">
+                @Html.DropDownList("cli_id", null, htmlAttributes: new { @class = "form-control" })
+                @Html.ValidationMessageFor(model => model.cli_id, "", new { @class = "text-danger" })
+            </div>
+        </div>
+
+        <div class="form-group">
+            <label class="control-label col-md-2">Usuario: </label>
+            <div class="col-md-10">
+                @Html.DropDownList("usu_id", null, htmlAttributes: new { @class = "form-control" })
+                @Html.ValidationMessageFor(model => model.usu_id, "", new { @class = "text-danger" })
+            </div>
+        </div>
+
+        <div class="form-group">
+            <label class="control-label col-md-2">Fecha Ingreso: </label>
+            <div class="col-md-10">
+                @Html.EditorFor(model => model.res_fecha_registro, new { htmlAttributes = new { @class = "form-control" } })
+                @Html.ValidationMessageFor(model => model.res_fecha_registro, "", new { @class = "text-danger" })
+            </div>
+        </div>
+
+        <div class="form-group">
+            <label class="control-label col-md-2">Fecha Salida: </label>
+            <div class="col-md-10">
+                @Html.EditorFor(model => model.res_fecha_reserva, new { htmlAttributes = new { @class = "form-control" } })
+                @Html.ValidationMessageFor(model => model.res_fecha_reserva, "", new { @class = "text-danger" })
+            </div>
+        </div>
+
+        <div class="form-group">
+            <label class="control-label col-md-2">Estado: </label>
+            <div class="col-md-10">
+                @Html.EditorFor(model => model.res_estado, new { htmlAttributes = new { @class = "form-control" } })
+                @Html.ValidationMessageFor(model => model.res_estado, "", new { @class = "text-danger" })
+            </div>
+        </div>
+
+        <div class="form-group">
+            <label class="control-label col-md-2">Importe: </label>
+            <div class="col-md-10">
+                @Html.EditorFor(model => model.res_monto, new { htmlAttributes = new { @class = "form-control" } })
+                @Html.ValidationMessageFor(model => model.res_monto, "", new { @class = "text-danger" })
+            </div>
+        </div>
+
+        <div class="form-group">
+            <div class="col-md-offset-2 col-md-10">
+                <input type="submit" value="Grabar" class="btn btn-success" />
+            </div>
+        </div>
+    </div>
+}
+
+<div>
+    <a href="@Url.Action("Index", "reserva")" class="btn btn-primary btn-sm"><span class="glyphicon glyphicon-chevron-left"></span> Regresar</a>
+</div>
+
+@section Scripts {
+    @Scripts.Render("~/bundles/jqueryval")
+}

@@ -1,0 +1,37 @@
+﻿@model IEnumerable<proyectokevin.Models.tipo_cliente>
+
+@{
+    ViewBag.Title = "Tipos de Cliente";
+}
+
+<h2>Tipos de Cliente</h2>
+
+<p>
+    <a href="@Url.Action("Create", "tipo_cliente")" class="btn btn-success btn-sm"><span class="glyphicon glyphicon-plus"></span> Nuevo Tipo</a>
+</p>
+<table class="table">
+    <tr>
+        <th>Código
+        </th>
+        <th>Descripción
+        </th>
+        <th></th>
+    </tr>
+
+@foreach (var item in Model) {
+    <tr>
+        <td>
+            @Html.DisplayFor(modelItem => item.tic_codigo)
+        </td>
+        <td>
+            @Html.DisplayFor(modelItem => item.tic_descripcion)
+        </td>
+        <td>
+            <a href="@Url.Action("Edit", "tipo_cliente", new { id=item.id })" class="btn btn-primary btn-xs"><span class="glyphicon glyphicon-edit"></span> Editar</a>
+            <a href="@Url.Action("Details", "tipo_cliente", new { id=item.id })" class="btn btn-warning btn-xs"><span class="glyphicon glyphicon-eye-open"></span> Detalles</a>
+            <a href="@Url.Action("Delete", "tipo_cliente", new { id=item.id })" class="btn btn-danger btn-xs"><span class="glyphicon glyphicon-trash"></span> Borrar</a>
+        </td>
+    </tr>
+}
+
+</table>

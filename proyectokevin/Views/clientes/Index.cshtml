@@ -1,0 +1,75 @@
+﻿@model IEnumerable<proyectokevin.Models.cliente>
+
+@{
+    ViewBag.Title = "Clientes";
+}
+
+<h2>Gestionar Clientes</h2>
+
+<p>
+    <a href="@Url.Action("Create", "clientes")" class="btn btn-success btn-sm"><span class="glyphicon glyphicon-plus"></span> Nuevo Cliente</a>
+</p>
+<table class="table">
+    <tr>
+        <th>
+            DNI/RUC
+        </th>
+        <th>
+            DESCRIPCION
+        </th>
+        <th>
+            NOMBRES
+        </th>
+        <th>
+            APELLIDOS
+        </th>
+        <th>
+            TELEFONO
+        </th>
+        <th>
+            EMAIL
+        </th>
+        <th>
+            DIRECCION
+        </th>
+        <th>
+            TIPO CLIENTE
+        </th>
+        <th></th>
+    </tr>
+
+@foreach (var item in Model) {
+    <tr>
+        <td>
+            @Html.DisplayFor(modelItem => item.cli_codigo)
+        </td>
+        <td>
+            @Html.DisplayFor(modelItem => item.cli_descripcion)
+        </td>
+        <td>
+            @Html.DisplayFor(modelItem => item.cli_nombres)
+        </td>
+        <td>
+            @Html.DisplayFor(modelItem => item.cli_apellidos)
+        </td>
+        <td>
+            @Html.DisplayFor(modelItem => item.cli_telefono)
+        </td>
+        <td>
+            @Html.DisplayFor(modelItem => item.cli_email)
+        </td>
+        <td>
+            @Html.DisplayFor(modelItem => item.cli_direccion)
+        </td>
+        <td>
+            @Html.DisplayFor(modelItem => item.tipo_cliente.tic_codigo)
+        </td>
+        <td>
+            <a href="@Url.Action("Edit", "clientes", new { id=item.id })" class="btn btn-primary btn-xs"><span class="glyphicon glyphicon-edit"></span> Editar</a>
+            <a href="@Url.Action("Details", "clientes", new { id=item.id })" class="btn btn-warning btn-xs"><span class="glyphicon glyphicon-eye-open"></span> Detalles</a>
+            <a href="@Url.Action("Delete", "clientes", new { id=item.id })" class="btn btn-danger btn-xs"><span class="glyphicon glyphicon-trash"></span> Borrar</a>
+        </td>
+    </tr>
+}
+
+</table>

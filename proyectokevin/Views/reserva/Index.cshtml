@@ -1,0 +1,70 @@
+﻿@model IEnumerable<proyectokevin.Models.reserva>
+
+@{
+    ViewBag.Title = "Reservas";
+}
+
+<h2>Reservas</h2>
+
+<p>
+    <a href="@Url.Action("Create", "reserva")" class="btn btn-success btn-sm"><span class="glyphicon glyphicon-plus"></span> Nueva Reserva</a>
+
+</p>
+<table class="table">
+    <tr>
+        <th>
+            Fecha Ingreso
+        </th>
+        <th>
+            Fecha Salida
+        </th>
+        <th>
+            Estado
+        </th>
+        <th>
+            Importe
+        </th>
+        <th>
+            Cliente
+        </th>
+        <th>
+            Habitacion
+        </th>
+        <th>
+            Usuario
+        </th>
+        <th></th>
+    </tr>
+
+@foreach (var item in Model) {
+    <tr>
+        <td>
+            @Html.DisplayFor(modelItem => item.res_fecha_registro)
+        </td>
+        <td>
+            @Html.DisplayFor(modelItem => item.res_fecha_reserva)
+        </td>
+        <td>
+            @Html.DisplayFor(modelItem => item.res_estado)
+        </td>
+        <td>
+            @Html.DisplayFor(modelItem => item.res_monto)
+        </td>
+        <td>
+            @Html.DisplayFor(modelItem => item.cliente.cli_codigo)
+        </td>
+        <td>
+            @Html.DisplayFor(modelItem => item.habitacion.hab_codigo)
+        </td>
+        <td>
+            @Html.DisplayFor(modelItem => item.usuario.usu_usuario)
+        </td>
+        <td>
+            <a href="@Url.Action("Edit", "reserva", new { id=item.id })" class="btn btn-primary btn-xs"><span class="glyphicon glyphicon-edit"></span> Editar</a>
+            <a href="@Url.Action("Details", "reserva", new { id=item.id })" class="btn btn-warning btn-xs"><span class="glyphicon glyphicon-eye-open"></span> Detalles</a>
+            <a href="@Url.Action("Delete", "reserva", new { id=item.id })" class="btn btn-danger btn-xs"><span class="glyphicon glyphicon-trash"></span> Borrar</a>
+        </td>
+    </tr>
+}
+
+</table>

@@ -1,0 +1,17 @@
+CREATE TABLE cliente (id int IDENTITY NOT NULL, cli_codigo varchar(50) NULL, cli_descripcion varchar(200) NULL, cli_nombres varchar(100) NULL, cli_apellidos varchar(150) NULL, cli_telefono char(20) NULL, cli_email varchar(50) NULL, cli_direccion varchar(200) NULL, tic_id int NOT NULL, PRIMARY KEY (id));
+CREATE TABLE comprobante (id int IDENTITY NOT NULL, com_fecha_registro datetime NULL, com_importe decimal(10, 2) NULL, com_igv decimal(10, 2) NULL, com_estado int NULL, com_nombre varchar(100) NULL, com_apellido varchar(150) NULL, res_id int NOT NULL, PRIMARY KEY (id));
+CREATE TABLE comprobante_detalle (id int IDENTITY NOT NULL, hab_precio decimal(10, 2) NULL, hab_cantidad int NULL, hab_importe decimal(10, 2) NULL, com_id int NOT NULL, PRIMARY KEY (id));
+CREATE TABLE habitacion (id int IDENTITY NOT NULL, hab_codigo varchar(50) NULL, hab_descripcion varchar(200) NULL, hab_fotop varchar(250) NULL, hab_precio decimal(10, 2) NULL, tih_id int NOT NULL, PRIMARY KEY (id));
+CREATE TABLE reserva (id int IDENTITY NOT NULL, hab_id int NOT NULL, cli_id int NOT NULL, usu_id int NOT NULL, res_fecha_registro datetime NULL, res_fecha_reserva datetime NULL, res_estado int NULL, res_monto decimal(10, 2) NULL, PRIMARY KEY (id));
+CREATE TABLE rol (id int IDENTITY NOT NULL, rol_codigo varchar(50) NULL, rol_descripcion varchar(200) NULL, PRIMARY KEY (id));
+CREATE TABLE tipo_cliente (id int IDENTITY NOT NULL, tic_codigo varchar(50) NULL, tic_descripcion varchar(200) NULL, PRIMARY KEY (id));
+CREATE TABLE tipo_habitacion (id int IDENTITY NOT NULL, tih_codigo varchar(50) NULL, tih_descripcion varchar(200) NULL, PRIMARY KEY (id));
+CREATE TABLE usuario (id int IDENTITY NOT NULL, usu_usuario varchar(100) NULL, usu_clave varchar(250) NULL, usu_estado int NULL, usu_nombre varchar(100) NULL, usu_apellidos varchar(150) NULL, rol_id int NOT NULL, PRIMARY KEY (id));
+ALTER TABLE comprobante_detalle ADD CONSTRAINT FKcomprobant588849 FOREIGN KEY (com_id) REFERENCES comprobante (id);
+ALTER TABLE comprobante ADD CONSTRAINT FKcomprobant678121 FOREIGN KEY (res_id) REFERENCES reserva (id);
+ALTER TABLE reserva ADD CONSTRAINT FKreserva663108 FOREIGN KEY (usu_id) REFERENCES usuario (id);
+ALTER TABLE reserva ADD CONSTRAINT FKreserva948990 FOREIGN KEY (cli_id) REFERENCES cliente (id);
+ALTER TABLE reserva ADD CONSTRAINT FKreserva877451 FOREIGN KEY (hab_id) REFERENCES habitacion (id);
+ALTER TABLE usuario ADD CONSTRAINT FKusuario150527 FOREIGN KEY (rol_id) REFERENCES rol (id);
+ALTER TABLE cliente ADD CONSTRAINT FKcliente168831 FOREIGN KEY (tic_id) REFERENCES tipo_cliente (id);
+ALTER TABLE habitacion ADD CONSTRAINT FKhabitacion615678 FOREIGN KEY (tih_id) REFERENCES tipo_habitacion (id);
